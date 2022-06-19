@@ -17,12 +17,12 @@ cdef struct Rect:
 
 
 cdef void pad_rectangle(rect: Rect):
-    if rect[ "dx" ] > 2:
-        rect[ "x" ] += 1
-        rect[ "dx" ] -= 2
-    if rect[ "dy" ] > 2:
-        rect[ "y" ] += 1
-        rect[ "dy" ] -= 2
+    if rect.dx > 2:
+        rect.x += 1
+        rect.dx -= 2
+    if rect.dy > 2:
+        rect.y += 1
+        rect.dy -= 2
 
 
 cdef list[Rect] layoutrow(sizes: list[cython.float], 
@@ -36,7 +36,7 @@ cdef list[Rect] layoutrow(sizes: list[cython.float],
     width: cython.float = covered_area / dy
     rects: List[Rect] = [Rect(x, y + size/width, width, size/width) 
                          for size in sizes]
-    
+
     return rects
 
 
